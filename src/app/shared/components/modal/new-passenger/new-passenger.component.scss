@@ -1,0 +1,21 @@
+
+.mat-actions {
+  justify-content: center;
+  mat-divider {
+    width: 100%;
+  }
+}
+.invalid {
+  border: 1px solid red !important;
+}
+.cancel-btn {
+  background-color: #d8d8d8;
+  color: black;
+}
+
+mat-form-field{
+  margin-right: 20px;
+}
+mat-label {
+  font-weight: bold;
+}

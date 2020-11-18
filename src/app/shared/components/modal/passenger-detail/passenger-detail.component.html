@@ -1,0 +1,53 @@
+<mat-dialog-content>
+  <h3>{{ passengerDetails.firstName }} {{ passengerDetails.lastName }}</h3>
+  <div class="passenger-detail-container">
+    <div class="label">
+      <h5>Seat No.</h5>
+      <h5>Passport No.</h5>
+      <h5>Birth Date</h5>
+      <h5>Address</h5>
+    </div>
+    <div class="passenger-detail">
+      <h5>{{ passengerDetails.seatNumber }}</h5>
+      <h5>{{ passengerDetails.passport }}</h5>
+      <h5>{{ passengerDetails.birthdate }}</h5>
+      <h5>{{ passengerDetails.address }}</h5>
+    </div>
+  </div>
+  <div class="services" *ngIf="!data.edit && (
+      passengerDetails.wheelChair ||
+      passengerDetails.infants ||
+      passengerDetails.ancillaryServices)
+    ">
+    <h4>Services required -</h4>
+    <label *ngIf="passengerDetails.wheelChair">Passenger required Wheel Chair.</label>
+    <label *ngIf="passengerDetails.infants">Passenger with infants.</label>
+    <label *ngIf="passengerDetails.ancillaryServices">Passenger needs Ancillary Services.</label>
+  </div>
+  <div class="edit-services" *ngIf="data.edit">
+    <h4>Add or Remove services required -</h4>
+    <div style="margin-bottom: 8px;" [formGroup]="parentGroup">
+      <label>Seat Number : </label>
+      <input matInput placeholder="Ex. A1" [value]="passengerDetails.seatNumber" width="30px"
+        (focusout)="modifiedServices('seatNumber', parentGroup.get('seatNumber').value, parentGroup.get('seatNumber').invalid)"
+        maxlength="3" formControlName="seatNumber" [ngClass]="{'invalid': parentGroup.get('seatNumber').invalid}"
+        required>
+    </div>
+    <mat-checkbox [checked]="passengerDetails.wheelChair" (change)="modifiedServices('wheelChair', $event.checked)">
+      passenger required Wheel Chair.</mat-checkbox>
+    <mat-checkbox [checked]="passengerDetails.infants" (change)="modifiedServices('infants', $event.checked)">passenger
+      with infants.</mat-checkbox>
+    <mat-checkbox [checked]="passengerDetails.ancillaryServices"
+      (change)="modifiedServices('ancillaryServices', $event.checked)">passenger needs Ancillary Services.
+    </mat-checkbox>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="mat-actions">
+  <mat-divider></mat-divider>
+  <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1" [disabled]="checkIsValid()">
+    {{ confirmButtonText }}
+  </button>
+  <button mat-raised-button class="cancel-btn" (click)="onCancel()">
+    Cancel
+  </button>
+</mat-dialog-actions>

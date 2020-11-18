@@ -1,0 +1,40 @@
+<mat-dialog-content>
+  <h3>In flight status of passenger</h3>
+  <div class="passenger-detail-container">
+    <div class="label">
+      <h5>Name</h5>
+      <h5>Seat No.</h5>
+      <h5>Passport No.</h5>
+    </div>
+    <div class="passenger-detail">
+      <h5>{{ passengerDetails.firstName }} {{ passengerDetails.lastName }}</h5>
+      <h5>{{ passengerDetails.seatNumber }}</h5>
+      <h5>{{ passengerDetails.passport }}</h5>
+    </div>
+  </div>
+  <div class="edit-services" [formGroup]="parentGroup">
+    <h3 style="color: #3f51b5;">Change meal preference and services required :</h3>
+    <div style="margin-bottom: 8px;">
+      <label style="font-weight: bold;">Meal preference : </label>
+      <mat-radio-group aria-label="select meal" formControlName="specialMeal">
+        <mat-radio-button [value]="true">Special meal</mat-radio-button>
+        <mat-radio-button [value]="false">Normal meal</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <app-chip-list [listProvided]="data.flightData.ancillaryServiceList" controlName="serviceList"
+      placeHolder="Please add services" [parentForm]="parentGroup" [currentValues]="passengerDetails.serviceList">
+    </app-chip-list>
+    <app-chip-list [listProvided]="data.flightData.shopItemList" controlName="shopItems"
+      placeHolder="Please add shopping items" [parentForm]="parentGroup" [currentValues]="passengerDetails.shopItems">
+    </app-chip-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="mat-actions">
+  <mat-divider></mat-divider>
+  <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1" [disabled]="checkIsValid()">
+    {{ confirmButtonText }}
+  </button>
+  <button mat-raised-button class="cancel-btn" (click)="onCancel()">
+    Cancel
+  </button>
+</mat-dialog-actions>

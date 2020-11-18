@@ -1,0 +1,70 @@
+<h2 *ngIf="!adminUse">passengers detail list</h2>
+<div style="width: calc(100% - 85px);">
+  <mat-form-field appearance="fill" style="font-size: 13px">
+    <mat-label>Select to filter</mat-label>
+    <mat-select (selectionChange)="filterData($event)" [(ngModel)]="defaultFilter">
+      <mat-option *ngFor="let item of filterList" [value]="item.key">{{item.value}}</mat-option>
+    </mat-select>
+    <button mat-button *ngIf="defaultFilter" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter($event)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button *ngIf="adminUse" class="add-btn" color="primary" mat-raised-button (click)="editpassengerDetails('')">Add
+    passenger</button>
+</div>
+<div class="table-container">
+  <table mat-table [dataSource]="rowData" class="mat-elevation-z8">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="passport">
+      <th mat-header-cell *matHeaderCellDef> Passport </th>
+      <td mat-cell *matCellDef="let element"> {{element.passport}} </td>
+    </ng-container>
+    <ng-container matColumnDef="birthdate">
+      <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.birthdate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+    <ng-container matColumnDef="flightId">
+      <th mat-header-cell *matHeaderCellDef> Flight Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.flightId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="seatNumber">
+      <th mat-header-cell *matHeaderCellDef> Seat Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.seatNumber}} </td>
+    </ng-container>
+    <ng-container matColumnDef="checkedIn">
+      <th mat-header-cell *matHeaderCellDef> Checked In </th>
+      <td mat-cell *matCellDef="let element"> {{element.checkedIn | yesNo }} </td>
+    </ng-container>
+    <ng-container matColumnDef="infants">
+      <th mat-header-cell *matHeaderCellDef> Infants </th>
+      <td mat-cell *matCellDef="let element"> {{element.infants | yesNo }} </td>
+    </ng-container>
+    <ng-container matColumnDef="wheelChair">
+      <th mat-header-cell *matHeaderCellDef> Wheel Chair </th>
+      <td mat-cell *matCellDef="let element"> {{element.wheelChair | yesNo }} </td>
+    </ng-container>
+    <ng-container matColumnDef="ancillaryServices">
+      <th mat-header-cell *matHeaderCellDef> Ancillary Services </th>
+      <td mat-cell *matCellDef="let element"> {{element.ancillaryServices | yesNo }} </td>
+    </ng-container>
+    <ng-container matColumnDef="editDetails">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon (click)="editpassengerDetails(element)" style="cursor: pointer;"> edit</mat-icon>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

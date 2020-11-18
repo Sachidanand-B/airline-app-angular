@@ -1,0 +1,43 @@
+.container {
+  height: auto;
+  overflow-y: auto;
+  .mat-expansion-panel {
+    margin: auto;
+    width: 95%;
+    box-shadow: 2px 3px 15px -5px grey;
+    margin-bottom: 1%;
+  }
+  .mat-expansion-panel-header-title {
+    font-weight: bold;
+    font-size: inherit;
+  }
+  .mat-expansion-panel-header-description {
+    align-items: center;
+  }
+  .flight-detail-container {
+    display: flex;
+    .label {
+      width: 100px;
+      padding-left: 3%;
+    }
+    h4,
+    h5 {
+      margin: 2%;
+    }
+    .flight-detail {
+      width: 150px;
+    }
+  }
+  .toggle-container {
+    display: flex;
+    float: right;
+    margin-right: 60px;
+    font-weight: bold;
+    width: 250px;
+  }
+  .table-container{
+    padding: 10px 0px 0px 35px;
+    width: 100%;
+  }
+}
+

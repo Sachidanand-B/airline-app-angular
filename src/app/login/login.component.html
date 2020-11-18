@@ -1,0 +1,13 @@
+<div class="login-container">
+    <div style="text-align: center;">
+        <h2>Switch between account type and login</h2>
+        <div class="switch-mode">
+            <mat-slide-toggle (change)="toggleState($event)"> {{ displayToggleState(currentToggleValue) }} mode
+            </mat-slide-toggle>
+        </div>
+        <div class="google-login-container">
+            <img src="./../../assets/images/png/google_signing.png" alt="Sign-in with Google" (click)="register()"
+                height="50px" width="190px">
+        </div>
+    </div>
+</div>

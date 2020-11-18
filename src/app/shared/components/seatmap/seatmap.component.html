@@ -1,0 +1,56 @@
+<div class="plane">
+  <div class="cockpit">
+    <h2>Cockpit layout</h2>
+  </div>
+  <div class="cabin fuselage">
+    <div class="container">
+      <ol class="seats">
+        <li class="row-label empty-label"></li>
+        <li class="seat" *ngFor="let seatNumber of seatLabel" ngClass.sm="seat-sm" ngClass.xs="seat-xs">
+          {{ seatNumber }}
+        </li>
+      </ol>
+      <ol class="seats" *ngFor="let item of seatList">
+        <div class="seat-type-label">{{ item.row }}</div>
+        <li *ngFor="let seat of item.seats; let i = index" [ngClass]="{
+            'selected-seat': selectedSeat === i + item.row,
+            'checked-in': seat.includes(checkedInText) && !isInFlightCall,
+            'not-checked-in': seat.includes(notCheckedInText) && !isInFlightCall,
+            'special-meal': seat.includes(specialMealText) && isInFlightCall,
+            'normal-meal': seat.includes(normalMealText) && isInFlightCall,
+            'not-allocated': seat.includes(null)
+          }" (click)="clickOnseat(i, item.row, seat)">
+          <label class="check-in-status" *ngIf="!isInFlightCall">
+            <div class="conditional-service">
+              <label *ngIf="seat.includes('infants')" class="infants"></label>
+              <label *ngIf="seat.includes('wheelChair')" class="wheel-chair"></label>
+            </div>
+          </label>
+          <label class="in-flight-status" *ngIf="isInFlightCall">
+            <div class="conditional-service">
+              <label *ngIf="seat.includes('serviceList')" class="ancillary-services"></label>
+              <label *ngIf="seat.includes('shopItems')" class="shop-items"></label>
+            </div>
+          </label>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="legend-section check-in-lengend" *ngIf="!isInFlightCall">
+    <ul class="legend">
+      <li><span style="background-color:#f17d13"></span> Checked In</li>
+      <li><span style="background-color:#00adff"></span> Not Checked In</li>
+      <li><span style="background-color:#666666"></span> Seat Not Allocated</li>
+      <li><span style="background-color:#e20ead"></span> Infants</li>
+      <li><span style="background-color:#24198a"></span> Wheel Chair</li>
+    </ul>
+  </div>
+  <div class="legend-section in-flight-lengend" *ngIf="isInFlightCall">
+    <ul class="legend">
+      <li><span style="background-color:#7cdc0f"></span> Special meals</li>
+      <li><span style="background-color:#e2ca0c"></span> Normal meals</li>
+      <li><span style="background-color:#ae00ff"></span> Ancillary services</li>
+      <li><span style="background-color:#dc0f0f"></span> Has shopping request</li>
+    </ul>
+  </div>
+</div>

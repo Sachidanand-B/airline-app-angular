@@ -1,0 +1,18 @@
+<header class="mat-card">
+  <mat-toolbar color="primary" class="fixed-header">
+    <mat-toolbar-row>
+      <img src="./assets/images/png/cropped-plane-flight-icon.png" style="width:50px;">
+      <nav mat-tab-nav-bar *ngIf='navList.length > 1'>
+        <a mat-button *ngFor="let link of navList" [routerLink]="link.path" routerLinkActive="active">
+          {{link.label}}
+        </a>
+      </nav>
+      <div *ngIf='navList.length === 1' style="padding: inherit;font-weight: bold;"> {{navList[0].label}}</div>
+      <div class="user-info">
+        Hello {{userName}}.<div style="padding-left: 92px;">
+          <mat-icon style="cursor: pointer;" (click)="signOut()">exit_to_app</mat-icon>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

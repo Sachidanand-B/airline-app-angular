@@ -1,0 +1,26 @@
+header{
+    background-color: #0b84bd;
+    margin-bottom: 15px;
+    a{
+        color: black;
+        background-color: #e0e0e0;
+        margin: 5px;
+    }
+    .active{
+        font-weight: bold;
+        background-color: yellowgreen;
+        color: white;
+    }
+}
+.user-info
+{
+    position: absolute;
+    right: 0px;
+    padding-right: 25px;
+}
+.fixed-header {
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000;
+}

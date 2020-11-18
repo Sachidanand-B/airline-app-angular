@@ -1,0 +1,51 @@
+.passenger-detail-container {
+  display: flex;
+  .label {
+    width: 125px;
+    padding-left: 3%;
+  }
+  h3,
+  h4,
+  h5 {
+    margin: 7%;
+  }
+  .passenger-detail {
+    width: 150px;
+  }
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  h4 {
+    margin-bottom: 5px;
+  }
+  label {
+    margin: 4px;
+    font-size: 14px;
+    color: #18a55e;
+  }
+}
+.edit-services {
+  color: #1a7bb5;
+  display: flex;
+  flex-direction: column;
+  input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid lightgray;
+  }
+}
+.mat-actions {
+  justify-content: center;
+  mat-divider {
+    width: 100%;
+  }
+}
+.invalid {
+  border: 1px solid red !important;
+}
+.cancel-btn {
+  background-color: #d8d8d8;
+  color: black;
+}

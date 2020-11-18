@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body{
+    font-family: arial;
+    margin: 0px;
+    padding: 0px;
+    .mat-form-field-label-wrapper{
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .mat-slide-toggle-thumb {
+        height: 17px !important;
+        width: 17px !important;
+        border-radius: 50px !important;
+    }
+    
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color:  #c5cae9;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color:  #3f51b5;
+    }
+    
+    .mat-slide-toggle-thumb-container {
+        width: 17px !important;
+        height: 17px !important;
+        top: 1px !important;
+    }
+    
+    .mat-slide-toggle.mat-checked .mat-ripple-element {
+        background-color:  #3f51b5;
+    }
+    
+    .mat-slide-toggle-bar {
+        width: 34px !important;
+        height: 19px !important;
+        border-radius: 50px !important;
+        
+    }
+
+    .airline-list-container .mat-slide-toggle-bar {
+        background-color:  #3f51b5;
+    }
+    
+    .mat-slide-toggle-thumb {
+        background-color:  #c5cae9;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .mat-radio-button {
+        margin: 10px 0px !important;
+    }
+    
+    .mat-radio-container {
+        height: 14px !important;
+        width: 14px !important;
+    }
+    
+    .mat-radio-label-content {
+        padding-left: 6px !important;
+        padding-right: 7px;
+        font-size: 14px;
+    }
+    
+    .mat-radio-checked .mat-radio-inner-circle {
+        transform: scale(0.7) !important;
+    }
+    
+    .mat-radio-outer-circle {
+        height: 14px !important;
+        width: 14px !important;
+        border-width: 1px !important;
+    }
+    
+    .mat-radio-inner-circle {
+        height: 14px !important;
+        width: 14px !important;
+    }
+
+    .mat-tab-body.mat-tab-body-active {
+        padding-top: 20px;
+    }
+}

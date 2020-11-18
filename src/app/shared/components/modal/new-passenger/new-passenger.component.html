@@ -1,0 +1,78 @@
+<h3>Add new or update passenger</h3>
+<form [formGroup]="parentGroup" (ngSubmit)="onConfirmClick(parentGroup)" style="font-size: 14px;">
+  <mat-form-field>
+    <mat-label>First Name:</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last Name:</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Adress:</mat-label>
+    <textarea matInput formControlName="address"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Passport:</mat-label>
+    <input matInput formControlName="passport">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Seat Number:</mat-label>
+    <input matInput formControlName="seatNumber" maxlength="3">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>DOB:</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthdate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-label>Checked In: </mat-label>
+  <mat-radio-group formControlName="checkedIn">
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-label>Infants: </mat-label>
+  <mat-radio-group formControlName="infants">
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-label>Wheel Chair: </mat-label>
+  <mat-radio-group formControlName="wheelChair">
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-label>Special Meal: </mat-label>
+  <mat-radio-group formControlName="specialMeal">
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-label>Ancillary Services: </mat-label>
+  <mat-radio-group formControlName="ancillaryServices">
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <app-chip-list [listProvided]="flightServiceList"
+    [currentValues]="passengerDetails? passengerDetails.serviceList : ''" controlName="serviceList"
+    placeHolder="Please add services" [parentForm]="parentGroup"></app-chip-list>
+  <br>
+  <app-chip-list [listProvided]="flightShopItemList" [currentValues]="passengerDetails? passengerDetails.shopItems : ''"
+    controlName="shopItems" placeHolder="Please add shop items" [parentForm]="parentGroup"></app-chip-list>
+  <br>
+  <mat-dialog-actions class="mat-actions">
+    <mat-divider></mat-divider>
+    <button type="submit" mat-raised-button color="primary" tabindex="1" [disabled]="checkIsValid()">
+      {{ confirmButtonText }}
+    </button>
+    <button mat-raised-button class="cancel-btn" (click)="onCancel()">
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</form>

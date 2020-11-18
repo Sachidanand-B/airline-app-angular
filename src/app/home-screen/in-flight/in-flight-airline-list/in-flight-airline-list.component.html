@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let flight of flightListData; let i = index" (opened)="getFlightDetails(flight, i)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ flight.from }} &#x27F6; {{ flight.to }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ flight.source }} - {{ flight.destination }} -
+          {{ flight.date }}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="flight-detail-container">
+        <div class="label">
+          <h4>Flight No.</h4>
+          <h4>Flight partner</h4>
+          <h5>Route ID</h5>
+        </div>
+        <div class="flight-detail">
+          <h4>{{flight.flightnumber}}</h4>
+          <h4>{{ flight.flightname }}</h4>
+          <h5>{{ flight.routeid }}</h5>
+        </div>
+      </div>
+      <div class="table-container">
+        <app-seatmap *ngIf="panelOpenedIndex === i" [seatMapData]="passengerData" [isInFlightCall]="true"
+          [flightData]="flight"></app-seatmap>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

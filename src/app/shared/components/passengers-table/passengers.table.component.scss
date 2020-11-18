@@ -1,0 +1,15 @@
+.table-container {
+    height: 310px;
+    overflow: auto;
+    width: calc(100% - 85px);
+    table {
+        width: 100%;
+        .mat-header-row, .mat-row{
+            height: 45px;
+        }
+      }
+  }
+  .add-btn {
+    float: right;
+    margin-top: 10px;
+  }
