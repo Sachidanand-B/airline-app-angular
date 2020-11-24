@@ -13,7 +13,7 @@ export const environment = {
       messagingSenderId: '490591841438',
       appId: '1:490591841438:web:ab94e8bc9fb07807b0df8f',
       measurementId: 'G-ZZ4DT82BX7',
-      backendAPI: 'http://localhost:5000'
+      backendAPI: 'https://airline-management-apis.herokuapp.com'
     }
 };
 
