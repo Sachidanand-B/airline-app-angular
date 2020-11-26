@@ -8,6 +8,7 @@ import { HttpInteractService } from '../core/services/http-interact.service';
 import { Router } from '@angular/router';
 
 describe('AuthService', () => {
+  let service: AuthService;
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
@@ -15,15 +16,55 @@ describe('AuthService', () => {
           provide: AngularFireAuth,
           useValue: { auth: { signInWithPopup: of() } },
         },
-        { provide: CookieService, useValue: {} },
+        {
+          provide: CookieService,
+          useValue: {
+            get: () => '',
+            deleteAll: () => '',
+          },
+        },
         { provide: HttpInteractService, useValue: {} },
-        { provide: Router, useValue: {} },
+        {
+          provide: Router,
+          useValue: {
+            navigateByUrl: () => '',
+          },
+        },
       ],
     })
   );
 
+  beforeEach(() => {
+    service = TestBed.get(AuthService);
+  });
+
   it('should be created', () => {
-    const service: AuthService = TestBed.get(AuthService);
     expect(service).toBeTruthy();
+  });
+
+  it('should get the role', () => {
+    const spyonCookieService = spyOn(
+      TestBed.get(CookieService),
+      'get'
+    ).and.returnValue('user');
+    const retValue = service.getRole;
+    expect(spyonCookieService).toHaveBeenCalledWith('role');
+    expect(retValue).toEqual('user');
+  });
+
+  it('should get the name', () => {
+    const spyonCookieService = spyOn(
+      TestBed.get(CookieService),
+      'get'
+    ).and.returnValue('name');
+    const retValue = service.getName;
+    expect(spyonCookieService).toHaveBeenCalledWith('name');
+    expect(retValue).toEqual('name');
+  });
+
+  it('should clear cookie', () => {
+    const spyonCookieService = spyOn(TestBed.get(CookieService), 'deleteAll');
+    service.clearCookie();
+    expect(spyonCookieService).toHaveBeenCalled();
   });
 });

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ModalComponent } from './shared/components/modal/modal.component';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +18,6 @@ import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
-    ModalComponent,
     LoginComponent,
   ],
   imports: [

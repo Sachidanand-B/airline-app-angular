@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CheckInComponent } from './check-in.component';
+import { ApplicationDataManagerService } from 'src/app/core/services/app-data-manager.service';
 
 describe('CheckInComponent', () => {
   let component: CheckInComponent;
@@ -10,9 +11,11 @@ describe('CheckInComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-      declarations: [CheckInComponent]
-    })
-      .compileComponents();
+      declarations: [CheckInComponent],
+      providers: [{ provide: ApplicationDataManagerService, useValue: {
+        listenFromServer: () => {}
+      } }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

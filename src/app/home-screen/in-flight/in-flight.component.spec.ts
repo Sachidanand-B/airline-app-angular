@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { InFlightComponent } from './in-flight.component';
+import { ApplicationDataManagerService } from 'src/app/core/services/app-data-manager.service';
+import { of } from 'rxjs';
 
 describe('InFlightComponent', () => {
   let component: InFlightComponent;
@@ -10,9 +12,16 @@ describe('InFlightComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-      declarations: [InFlightComponent]
-    })
-      .compileComponents();
+      declarations: [InFlightComponent],
+      providers: [
+        {
+          provide: ApplicationDataManagerService,
+          useValue: {
+            listenFromServer: () => of(''),
+          },
+        },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
